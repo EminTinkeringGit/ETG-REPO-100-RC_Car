@@ -1,0 +1,24 @@
+#include <Servo.h>
+
+// SERVO CABLES
+// BROWN: GND
+// RED: POSITIVE
+// ORANGE: PWM
+
+// STEERING SERVO
+Servo servo_motor;
+const int servo_pwm = 9;
+
+// SETUP FUNCTION
+void setup() {
+
+  Serial.begin(9600);
+
+  // STEERING SERVO PIN SETUP
+  servo_motor.attach(servo_pwm);
+}
+
+// LOOP FUNCTION
+void loop() {
+  Serial.println("RX throttle pulse: " + String(0));
+}

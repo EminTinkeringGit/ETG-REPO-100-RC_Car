@@ -1,0 +1,33 @@
+This project aims to restore an old RC car I found in my parents' basement. I’m reusing the chassis, suspension system, and DC motor. On top of that, I’m purchasing the necessary components and configuring them to bring it back to life.
+
+In this project I have a board where I keep track of my progress and the tasks I assign to myself. Updates and comments are added in the Status Updates section. The code and the relevant files are stored in the associated repository .
+
+I purchased an H bridge motor driver, the L298n, and I have purchased a simple 7CH controller with its receiver. I have managed to connect the components and to control the steering and the throttle of the RC car.
+
+Media:
+
+Video - First test
+Image - During debuggin
+Image - All components taped up
+Components used:
+
+DC motor
+Double H-bridge L298N DC motor driver module
+Arduino UNO compatible board
+Neeb RC NB-7D trasmitter with RX-G7X receiver
+Steering composed of a winding block coupled with a magnet
+Lipo battery 3S
+Next steps:
+
+During an initial test I have been able to start the system and control speed and direction of the car. I have noticed a signal interruption of the RC link, I will investigate to see if the issue is related to the TX/RX.
+Steering is not smooth, I am considering using a different actuator, e.g. a servo motor.
+The current motor driver is not powerfull enough as it provides maximum of 2A. I need a new motor driver module that can handle up to DC 9V-30V 60A.
+The way I am arranging the components on top of the car is not satisfatory, I am considering purchasing a 3D printer and print out the body shell and design slots for the components.
+
+ww
+I have managed to connect the DC motor to a circuit that includes a transistor (IRLZ34N) and then control the speed. The limitations are:
+
+Not possible to control speed in reverse, an H bridge is necessary.
+Same issue with the steering.
+I am not able to control the system remotely.
+Planning to buy the necessary items.www

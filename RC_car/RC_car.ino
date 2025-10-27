@@ -17,7 +17,7 @@ const int dir_B_throttle = 13;
 // STEERING SERVO
 Servo servo_motor;
 int steering_angle;
-const int servo_pwm = 6;  
+const int servo_pwm = 6;
 const int RX_steering = 3;
 
 // STEERING PARAMETERS
@@ -27,7 +27,7 @@ int max_pulse_st = 2000;
 int dead_zone_st = 20;
 int steering;
 unsigned long pulse_steering;
-  
+
 
 
 // SETUP FUNCTION
@@ -43,7 +43,8 @@ void setup() {
 
   // STEERING SERVO PIN SETUP
   servo_motor.attach(servo_pwm);
-  
+  servo_motor.write(100);
+
   // STEERING PINs SETUP
   pinMode(RX_steering, INPUT);
 
@@ -56,35 +57,35 @@ void setup() {
 void loop() {
 
   // THROTTLE CONTROL
-  pulse_throttle = pulseIn(RX_throttle, HIGH, 25000); // Timeout after 25ms
+  pulse_throttle = pulseIn(RX_throttle, HIGH, 25000);  // Timeout after 25ms
 
   if (pulse_throttle < (mid_pulse_th - dead_zone_th)) {
     throttle = map(pulse_throttle, min_pulse_th, mid_pulse_th, 255, 0);
-    analogWrite(throttle_pwm_pin, throttle); // Forward speed
+    //analogWrite(throttle_pwm_pin, throttle);  // Forward speed
     digitalWrite(dir_A_throttle, LOW);
     digitalWrite(dir_B_throttle, HIGH);
   } else if (pulse_throttle > (mid_pulse_th + dead_zone_th)) {
     throttle = map(pulse_throttle, mid_pulse_th, max_pulse_th, 0, 255);
-    analogWrite(throttle_pwm_pin, throttle); // Reverse speed
+    //analogWrite(throttle_pwm_pin, throttle);  // Reverse speed
     digitalWrite(dir_A_throttle, HIGH);
     digitalWrite(dir_B_throttle, LOW);
   } else {
-    analogWrite(throttle_pwm_pin, 0); // Neutral
+    //analogWrite(throttle_pwm_pin, 0);  // Neutral
     digitalWrite(dir_A_throttle, HIGH);
     digitalWrite(dir_B_throttle, LOW);
   }
 
   // STEERING CONTROL
-  pulse_steering = pulseIn(RX_steering, HIGH, 25000); // Timeout after 25ms
+  pulse_steering = pulseIn(RX_steering, HIGH, 25000);  // Timeout after 25ms
 
   if (pulse_steering < (mid_pulse_st - dead_zone_st)) {
     steering_angle = map(pulse_steering, min_pulse_st, mid_pulse_st, 0, 89);
-    servo_motor.write(steering_angle);
+    //servo_motor.write(steering_angle);
   } else if (pulse_steering > (mid_pulse_st + dead_zone_st)) {
     steering_angle = map(pulse_steering, mid_pulse_st, max_pulse_st, 91, 180);
-    servo_motor.write(steering_angle);
+    //servo_motor.write(steering_angle);
   } else {
-    servo_motor.write(90); // Neutral - 90 degrees
+    //servo_motor.write(90);  // Neutral - 90 degrees
   }
 
   Serial.println("RX throttle pulse: " + String(pulse_throttle) + "// RX steering pulse: " + String(pulse_steering));
