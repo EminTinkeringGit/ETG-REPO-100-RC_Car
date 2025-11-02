@@ -30,4 +30,4 @@ I have managed to connect the DC motor to a circuit that includes a transistor (
 Not possible to control speed in reverse, an H bridge is necessary.
 Same issue with the steering.
 I am not able to control the system remotely.
-Planning to buy the necessary items.www
+Planning to buy the necessary items.

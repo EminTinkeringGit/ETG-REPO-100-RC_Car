@@ -8,7 +8,7 @@
 // STEERING SERVO
 Servo servo_motor;
 const int servo_pwm = 9;
-int init_angle = 86;
+int init_angle = 90;
 int oper_angle;
 int pulse_width;
 
